@@ -10,7 +10,9 @@ public class interactableObjects : MonoBehaviour
     /// </summary>
 
     private catActionScript _catActionScript;
+    private catController _catControllerScript;
     public Transform playerTransform;
+
 
     //public var
     public LayerMask puddleMask;
@@ -20,13 +22,15 @@ public class interactableObjects : MonoBehaviour
     private void Awake()
     {
         _catActionScript = FindObjectOfType<catActionScript>();
+        _catControllerScript = FindObjectOfType<catController>();
     }
 
     private void Update()
     {
         puddleCheck();
         shadowCheck();
-        puzzleObjectCheck();
+        dragPuzzleObject();
+       // puzzleObjectCheck();
     }
 
     #region check if player is inside the puddle
@@ -72,29 +76,21 @@ public class interactableObjects : MonoBehaviour
     }
     #endregion
 
-    #region check if player can interact with the puzzle object
-    void puzzleObjectCheck()
-    {
-        Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius, puzzleObjectsMask);
+    //#region check if player can interact with the puzzle object
+    //void puzzleObjectCheck()
+    //{
+    //    Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius, puzzleObjectsMask);
 
-        if(colliders.Length > 0)
-        {
-            _catActionScript.canDragObject = true;
-            if(_catActionScript.canDragObject)
-            {
-              // Debug.Log("can drag object");
-            }
-        }
-        else
-        {
-            _catActionScript.canDragObject = false;
-            if (!_catActionScript.canDragObject)
-            {
-               // Debug.Log("can drag object");
-            }
-        }
-    }
-    #endregion
+    //    if(colliders.Length > 0)
+    //    {
+    //        _catActionScript.canDragObject = true;
+    //    }
+    //    else
+    //    {
+    //        _catActionScript.canDragObject = false;
+    //    }
+    //}
+    //#endregion
 
     public void dragPuzzleObject()
     {
@@ -103,20 +99,25 @@ public class interactableObjects : MonoBehaviour
         if (colliders.Length > 0)
         {
             _catActionScript.canDragObject = true;
+            GameObject puzzleObject = colliders[0].gameObject;
+
             if (_catActionScript.canDragObject && _catActionScript.isDragginObject)
             {
-                Debug.Log("object is being drag");
-              //Debug.Log("Test", colliders[0].gameObject); 
+                Vector3 newPosition = playerTransform.position + playerTransform.forward * 2f;
+
+                puzzleObject.transform.position = newPosition;
+                puzzleObject.GetComponent<Rigidbody>().isKinematic = true;
+                //Debug.Log("object is being drag " + puzzleObject.name);
             }
-            if(!_catActionScript.isDragginObject)
+            else if(!_catActionScript.isDragginObject)
             {
-                Debug.Log("Object is not being drag");
+                puzzleObject.GetComponent<Rigidbody>().isKinematic = false;
+                //Debug.Log("Object is not being drag");
             }
         }
-    }
-
-    public void dragObject()
-    {
-        //logic for draging objects
+        else
+        {
+            _catActionScript.canDragObject = false;
+        }
     }
 }

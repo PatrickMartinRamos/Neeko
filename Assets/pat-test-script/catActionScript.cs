@@ -63,12 +63,7 @@ public class catActionScript : MonoBehaviour
            _interActableObjects.dragPuzzleObject();
        }
     }
-
-    public void draggingObject()
-    {
-        isDragginObject = !isDragginObject;
-    }
-        
+  
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

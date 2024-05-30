@@ -16,7 +16,6 @@ public class catController : MonoBehaviour
     private catMoveScript _catMoveScript;
     private catActionScript _catActionScript;
 
-
     public Subject<bool> TestSubject;
 
 
@@ -27,6 +26,7 @@ public class catController : MonoBehaviour
         _playerInputs = new PlayerInputEditor();
         _catMoveScript = GetComponent<catMoveScript>();
         _catActionScript = GetComponent<catActionScript>();
+
         //_interactableObjects = GetComponent<interactableObjects>();
     }
 
@@ -74,6 +74,6 @@ public class catController : MonoBehaviour
     public void dragInput(InputAction.CallbackContext context)
     {
         _catActionScript.canDragPuzzleObject();
-        _catActionScript.isDragginObject = !_catActionScript.isDragginObject;
+       _catActionScript.isDragginObject = !_catActionScript.isDragginObject;
     }
 }
