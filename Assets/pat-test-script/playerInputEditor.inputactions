@@ -1,0 +1,74 @@
+{
+    "name": "playerInputEditor",
+    "maps": [
+        {
+            "name": "playerMovements",
+            "id": "177f3f0f-7f7d-4c20-9ff3-8ea01106c724",
+            "actions": [
+                {
+                    "name": "Walk",
+                    "type": "Button",
+                    "id": "ef658e5f-8e6d-451e-90d8-ef28572dfb39",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "3ab05317-d6ad-4c5a-b63c-7d1bfad6231b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "dragObject",
+                    "type": "Button",
+                    "id": "0d0c9431-1661-438b-8afb-baee061e821f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8b52bfc9-63dd-4707-95b0-1d39fca05e0d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68497b5e-20a0-44c7-8763-c479654b65d5",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc1d46a5-1d11-480e-a6c3-3f1018e379ae",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "dragObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
