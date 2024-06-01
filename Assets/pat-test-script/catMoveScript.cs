@@ -15,16 +15,23 @@ public class catMoveScript : MonoBehaviour
     private bool isRotating = false;
     [SerializeField]
     private float rotationSpeed = 3f;
+    private Rigidbody _rb;
+    private bool isPlayerMoving = false;
 
     private void Start()
     {
         _camera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         rotateMotion();
+        if(!isPlayerMoving)
+        {
+            _rb.velocity = Vector3.zero;    
+        }
     }
 
     #region walk / rotation 
@@ -36,8 +43,15 @@ public class catMoveScript : MonoBehaviour
         {
             _agent.SetDestination(hit.point);
             _agent.isStopped = true;
-            isRotating = true; 
+            isRotating = true;
+            isPlayerMoving = true;
         }
+        if (_agent.remainingDistance <= _agent.stoppingDistance)
+        {
+            isPlayerMoving = false;
+            _rb.velocity = Vector3.zero;
+        }
+
     }
 
     void rotateMotion()

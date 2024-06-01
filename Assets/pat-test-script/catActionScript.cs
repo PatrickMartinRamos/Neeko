@@ -10,8 +10,9 @@ public class catActionScript : MonoBehaviour
     /// </summary>
 
     //system var
-    public float interactRadius;
+    public static catActionScript instance; 
 
+    public float interactRadius;
     public bool isInsidePuddle = false;
     public bool isInsideShadow = false;
     public bool isPlayerMoving = false;
@@ -23,6 +24,8 @@ public class catActionScript : MonoBehaviour
 
     private void Awake()
     {
+
+        instance = this;
         _interActableObjects = FindObjectOfType<interactableObjects>();
     }
     private void Start()
