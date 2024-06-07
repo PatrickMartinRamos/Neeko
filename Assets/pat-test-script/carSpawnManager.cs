@@ -18,6 +18,7 @@ public class SpawnPoint
 public class carSpawnManager : MonoBehaviour
 {
     public List<SpawnPoint> spawnPoints; // List of spawn points
+    private npcScript _npcScript; 
 
     private void Start()
     {

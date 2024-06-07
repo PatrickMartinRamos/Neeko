@@ -13,11 +13,12 @@ public class catActionScript : MonoBehaviour
     public static catActionScript instance; 
 
     public float interactRadius;
-    public bool isInsidePuddle = false;
-    public bool isInsideShadow = false;
-    public bool isPlayerMoving = false;
-    public bool canDragObject = false;
-    public bool isDragginObject = false;
+    [HideInInspector] public bool isInsidePuddle = false;
+    [HideInInspector] public bool isInsideShadow = false;
+    [HideInInspector] public bool isPlayerMoving = false;
+    [HideInInspector] public bool canDragObject = false;
+    [HideInInspector] public bool isDragginObject = false;
+    [HideInInspector] public bool isNPCInteractable = false;
     private Vector3 previousPOS;
 
     private interactableObjects _interActableObjects;
