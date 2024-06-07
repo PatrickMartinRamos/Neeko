@@ -49,6 +49,7 @@ public class HeatPointsManager : MonoBehaviour
     IEnumerator IncreaseHP(float increment)
     {
         canIncrease = false;
+        //heatBar.value = Mathf.Lerp(heatBar.value)
         heatBar.value += increment;
         playerHeatPt.heatPoints = heatBar.value;
         yield return new WaitForSeconds(1);
