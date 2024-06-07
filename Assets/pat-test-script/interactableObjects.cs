@@ -12,8 +12,7 @@ public class interactableObjects : MonoBehaviour
     private catActionScript _catActionScript;
     private catController _catControllerScript;
     public Transform playerTransform;
-
-
+    
     //public var
     public LayerMask puddleMask;
     public LayerMask shadowMask;
