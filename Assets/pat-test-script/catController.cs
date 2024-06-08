@@ -16,7 +16,9 @@ public class catController : MonoBehaviour
     private catMoveScript _catMoveScript;
     private catActionScript _catActionScript;
 
-    public Subject<bool> TestSubject;
+    private Vector2 walkAction;
+
+    //public Subject<bool> TestSubject;
 
 
     //private interactableObjects _interactableObjects;
@@ -30,10 +32,21 @@ public class catController : MonoBehaviour
         //_interactableObjects = GetComponent<interactableObjects>();
     }
 
+    private void Update()
+    {
+        if (walkAction != Vector2.zero)
+        {
+            _catMoveScript.walkMotionWASD(walkAction);
+        }
+    }
+
     #region enable/disable input action
     private void OnEnable()
     {
         _playerInputs.Enable();
+
+        _playerInputs.playerMovements.walkingWASD.performed += ctx => walkAction = ctx.ReadValue<Vector2>();
+        _playerInputs.playerMovements.walkingWASD.canceled += ctx => walkAction = Vector2.zero;
 
         _playerInputs.playerMovements.Walk.performed += WalkInput;
         _playerInputs.playerMovements.Walk.canceled += WalkInput;
@@ -51,6 +64,9 @@ public class catController : MonoBehaviour
     {
         _playerInputs.Disable();
 
+        _playerInputs.playerMovements.walkingWASD.performed -= ctx => walkAction = ctx.ReadValue<Vector2>();
+        _playerInputs.playerMovements.walkingWASD.canceled -= ctx => walkAction = Vector2.zero;
+
         _playerInputs.playerMovements.Walk.performed -= WalkInput;
         _playerInputs.playerMovements.Walk.canceled -= WalkInput;
 
@@ -67,7 +83,12 @@ public class catController : MonoBehaviour
 
     public void WalkInput(InputAction.CallbackContext context)
     {
-        _catMoveScript.WalkMotion();
+        //_catMoveScript.WalkMotion();
+    }
+
+    public void walkKeyboard(InputAction.CallbackContext context)
+    {
+
     }
 
     public void interactInput(InputAction.CallbackContext context)
