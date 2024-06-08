@@ -26,8 +26,7 @@ public class npcScript : MonoBehaviour
     private void Update()
     {
         walkNPC();
-
-        _rb.velocity = Vector3.zero;
+       _rb.velocity = Vector3.zero;
     }
 
     public void setNPCSpeed(float speed)
