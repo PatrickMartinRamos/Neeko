@@ -83,13 +83,9 @@ public class catController : MonoBehaviour
 
     public void WalkInput(InputAction.CallbackContext context)
     {
-        //_catMoveScript.WalkMotion();
+        _catMoveScript.WalkMotion();
     }
 
-    public void walkKeyboard(InputAction.CallbackContext context)
-    {
-
-    }
 
     public void interactInput(InputAction.CallbackContext context)
     {

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3071924028231507251}
   - component: {fileID: 2412571187449548605}
   - component: {fileID: 5194511704917512363}
-  - component: {fileID: 406640108142224922}
   m_Layer: 10
   m_Name: NPC 1
   m_TagString: Untagged
@@ -134,10 +133,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &5194511704917512363
 MonoBehaviour:
@@ -151,28 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fade154761aba247952be925de46337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &406640108142224922
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3304699529693988649}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &6421106840111498466
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2555069938953245100, guid: 55336d8329484ac4abd6915d50b22544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.892
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 2555069938953245100, guid: 55336d8329484ac4abd6915d50b22544, type: 3}
       propertyPath: m_LocalPosition.z
