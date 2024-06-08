@@ -11,17 +11,18 @@ public class NPCLogic
     [SerializeField] private float npcMovepeed;
     public float NpcMovepeed => npcMovepeed;
     public bool isUsingUmbrella = false;
-    public bool startMoving = false;
 }
 
 public class npcManager : MonoBehaviour
 {
     public List<NPCLogic> NPC;
     private npcScript _npcScript;
-
+    private catActionScript _catActionScript;
     private void Awake()
     {
+        _catActionScript = FindObjectOfType<catActionScript>();
         _npcScript = FindObjectOfType<npcScript>();
+
     }
     private void Start()
     {
@@ -30,11 +31,7 @@ public class npcManager : MonoBehaviour
     }
     private void Update()
     {
-        foreach(NPCLogic npc in NPC)
-        {
-            //Debug.Log(npc.NPCPrefab.name + " is using umbrella: " + npc.isUsingUmbrella);
-            //Debug.Log(npc.NPCPrefab.name + " speed is: " + npc.NpcMovepeed) ;
-        }
+        
     }
     public void AssignTargetPositions()
     {

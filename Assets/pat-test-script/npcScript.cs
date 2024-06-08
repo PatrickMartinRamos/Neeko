@@ -9,6 +9,7 @@ public class npcScript : MonoBehaviour
     private Transform targetPOS;
     private float moveSpeed;
     private Rigidbody _rb;
+    private bool npcStartMoving = false;
 
     private void Awake()
     {
@@ -39,9 +40,19 @@ public class npcScript : MonoBehaviour
         targetPOS = target;
     }
 
+    public void startNPCEvent(bool startWalking)
+    {
+        npcStartMoving = startWalking;
+    }
+
     void walkNPC()
     {
         //create event kung mag interacti si player start moving na ung npc
-        transform.position = Vector3.MoveTowards(transform.position, targetPOS.position,moveSpeed* Time.deltaTime);
+        if(npcStartMoving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPOS.position, moveSpeed * Time.deltaTime);
+            transform.LookAt(targetPOS);
+        }    
+        
     }
 }

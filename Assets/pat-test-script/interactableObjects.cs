@@ -11,6 +11,7 @@ public class interactableObjects : MonoBehaviour
 
     private catActionScript _catActionScript;
     private catController _catControllerScript;
+    private npcManager _npcManager;
     public Transform playerTransform;
     
     //public var
@@ -31,7 +32,7 @@ public class interactableObjects : MonoBehaviour
         shadowCheck();
         dragPuzzleObject();
         // puzzleObjectCheck();
-        checkNPC();
+        //NPCInteractions();
     }
 
     #region check if player is inside the puddle
@@ -63,7 +64,7 @@ public class interactableObjects : MonoBehaviour
             _catActionScript.isInsideShadow = true;
             if(_catActionScript.isInsideShadow)
             {
-                //Debug.Log("Player is inside the shadow!");
+                Debug.Log("Player is inside the shadow!");
             }
         }
         else
@@ -71,43 +72,34 @@ public class interactableObjects : MonoBehaviour
             _catActionScript.isInsideShadow = false;
             if(!_catActionScript.isInsideShadow)
             {
-                //Debug.Log("Player is not inside the shadow!");
+                Debug.Log("Player is not inside the shadow!");
             }
         }
     }
     #endregion
 
-    #region check if player can interacti with npcs+
-    public void checkNPC()
+    #region check if player can interacti with npcs
+    public void NPCInteractions()
     {
-        Collider[] collider = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius,NPCLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius,NPCLayerMask);
 
-        if(collider.Length > 0)
+        foreach (Collider collider in colliders)
         {
-            _catActionScript.isNPCInteractable = true;
+            npcScript npc = collider.GetComponent<npcScript>();//get npc script when near the npc
+            if (npc != null)    
+            {
+                //naka automatic pa to need ung interact button to triiger ung movement
+                _catActionScript.isNPCInteractable = true;
+                npc.startNPCEvent(true); // Start NPC movement
+            }
         }
-        else
+
+        if (colliders.Length == 0)
         {
             _catActionScript.isNPCInteractable = false;
         }
     }
     #endregion
-
-    //#region check if player can interact with the puzzle object
-    //void puzzleObjectCheck()
-    //{
-    //    Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius, puzzleObjectsMask);
-
-    //    if(colliders.Length > 0)
-    //    {
-    //        _catActionScript.canDragObject = true;
-    //    }
-    //    else
-    //    {
-    //        _catActionScript.canDragObject = false;
-    //    }
-    //}
-    //#endregion
 
     #region drag puzzle object
     public void dragPuzzleObject()
@@ -139,4 +131,5 @@ public class interactableObjects : MonoBehaviour
         }
     }
     #endregion
+
 }

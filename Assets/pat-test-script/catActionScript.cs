@@ -71,7 +71,7 @@ public class catActionScript : MonoBehaviour
 
     public void interactWithNPC()
     {
-
+        _interActableObjects.NPCInteractions();
     }
   
     private void OnDrawGizmos()
