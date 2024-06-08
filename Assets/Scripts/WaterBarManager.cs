@@ -9,6 +9,7 @@ public class WaterBarManager : MonoBehaviour
     private float increment = 0;
     [SerializeField] private status playerStatus;
     public BarValuesScriptable playerWaterDrop;
+    private PlayerStatusScriptable playerCondition;
     private bool canIncrease = true;
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +22,7 @@ public class WaterBarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerStatus = playerCondition.PlayerStatus;
         switch (playerStatus)
         {
             case status.inShadow:

@@ -14,6 +14,7 @@ public class HeatPointsManager : MonoBehaviour
     private float increment = 0;
     [SerializeField] private status playerStatus;
     public BarValuesScriptable playerHeatPt;
+    private PlayerStatusScriptable playerCondition;
     private bool canIncrease=true;
     // Start is called before the first frame update
     void Awake()
@@ -26,6 +27,7 @@ public class HeatPointsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerStatus = playerCondition.PlayerStatus;
         switch (playerStatus)
         {
             case status.inShadow:
