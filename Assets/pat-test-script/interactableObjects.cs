@@ -17,6 +17,7 @@ public class interactableObjects : MonoBehaviour
     public LayerMask puddleMask;
     public LayerMask shadowMask;
     public LayerMask puzzleObjectsMask;
+    public LayerMask NPCLayerMask;
 
     private void Awake()
     {
@@ -29,7 +30,8 @@ public class interactableObjects : MonoBehaviour
         puddleCheck();
         shadowCheck();
         dragPuzzleObject();
-       // puzzleObjectCheck();
+        // puzzleObjectCheck();
+        checkNPC();
     }
 
     #region check if player is inside the puddle
@@ -75,6 +77,22 @@ public class interactableObjects : MonoBehaviour
     }
     #endregion
 
+    #region check if player can interacti with npcs+
+    public void checkNPC()
+    {
+        Collider[] collider = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius,NPCLayerMask);
+
+        if(collider.Length > 0)
+        {
+            _catActionScript.isNPCInteractable = true;
+        }
+        else
+        {
+            _catActionScript.isNPCInteractable = false;
+        }
+    }
+    #endregion
+
     //#region check if player can interact with the puzzle object
     //void puzzleObjectCheck()
     //{
@@ -91,6 +109,7 @@ public class interactableObjects : MonoBehaviour
     //}
     //#endregion
 
+    #region drag puzzle object
     public void dragPuzzleObject()
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius, puzzleObjectsMask);
@@ -119,4 +138,5 @@ public class interactableObjects : MonoBehaviour
             _catActionScript.canDragObject = false;
         }
     }
+    #endregion
 }

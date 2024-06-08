@@ -53,6 +53,15 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NPCInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""49d1b143-08eb-4b09-bd26-2e59b8d35bb3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,7 +79,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""68497b5e-20a0-44c7-8763-c479654b65d5"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -88,6 +97,17 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
                     ""action"": ""dragObject"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e37dd00-a876-4913-9a4a-ec63d24c06e0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NPCInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         m_playerMovements_Walk = m_playerMovements.FindAction("Walk", throwIfNotFound: true);
         m_playerMovements_Interact = m_playerMovements.FindAction("Interact", throwIfNotFound: true);
         m_playerMovements_dragObject = m_playerMovements.FindAction("dragObject", throwIfNotFound: true);
+        m_playerMovements_NPCInteract = m_playerMovements.FindAction("NPCInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,6 +184,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
     private readonly InputAction m_playerMovements_Walk;
     private readonly InputAction m_playerMovements_Interact;
     private readonly InputAction m_playerMovements_dragObject;
+    private readonly InputAction m_playerMovements_NPCInteract;
     public struct PlayerMovementsActions
     {
         private @PlayerInputEditor m_Wrapper;
@@ -170,6 +192,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         public InputAction @Walk => m_Wrapper.m_playerMovements_Walk;
         public InputAction @Interact => m_Wrapper.m_playerMovements_Interact;
         public InputAction @dragObject => m_Wrapper.m_playerMovements_dragObject;
+        public InputAction @NPCInteract => m_Wrapper.m_playerMovements_NPCInteract;
         public InputActionMap Get() { return m_Wrapper.m_playerMovements; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
             @dragObject.started += instance.OnDragObject;
             @dragObject.performed += instance.OnDragObject;
             @dragObject.canceled += instance.OnDragObject;
+            @NPCInteract.started += instance.OnNPCInteract;
+            @NPCInteract.performed += instance.OnNPCInteract;
+            @NPCInteract.canceled += instance.OnNPCInteract;
         }
 
         private void UnregisterCallbacks(IPlayerMovementsActions instance)
@@ -201,6 +227,9 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
             @dragObject.started -= instance.OnDragObject;
             @dragObject.performed -= instance.OnDragObject;
             @dragObject.canceled -= instance.OnDragObject;
+            @NPCInteract.started -= instance.OnNPCInteract;
+            @NPCInteract.performed -= instance.OnNPCInteract;
+            @NPCInteract.canceled -= instance.OnNPCInteract;
         }
 
         public void RemoveCallbacks(IPlayerMovementsActions instance)
@@ -223,5 +252,6 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDragObject(InputAction.CallbackContext context);
+        void OnNPCInteract(InputAction.CallbackContext context);
     }
 }

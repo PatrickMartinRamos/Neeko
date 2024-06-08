@@ -44,6 +44,8 @@ public class catController : MonoBehaviour
         _playerInputs.playerMovements.dragObject.performed += dragInput;
         _playerInputs.playerMovements.dragObject.canceled += dragInput;
 
+        _playerInputs.playerMovements.NPCInteract.performed += NPCInteract;
+        _playerInputs.playerMovements.NPCInteract.canceled += NPCInteract;
     }
     private void OnDisable()
     {
@@ -57,6 +59,9 @@ public class catController : MonoBehaviour
 
         _playerInputs.playerMovements.dragObject.performed -= dragInput;
         _playerInputs.playerMovements.dragObject.canceled -= dragInput;
+
+        _playerInputs.playerMovements.NPCInteract.performed -= NPCInteract;
+        _playerInputs.playerMovements.NPCInteract.canceled -= NPCInteract;
     }
     #endregion
 
@@ -73,7 +78,14 @@ public class catController : MonoBehaviour
 
     public void dragInput(InputAction.CallbackContext context)
     {
+        //button for dragging puzzle objects
         _catActionScript.canDragPuzzleObject();
        _catActionScript.isDragginObject = !_catActionScript.isDragginObject;
     }
+
+    public void NPCInteract(InputAction.CallbackContext context)
+    {
+
+    }
+
 }

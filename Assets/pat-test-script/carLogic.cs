@@ -64,8 +64,6 @@ public class carLogic : MonoBehaviour
         {
             // Restore the speed to the original random speed
             randomSpeed = Random.Range(_carManager.SpeedRange.x, _carManager.SpeedRange.y);
-        }
-
-        
+        }   
     }
 }
