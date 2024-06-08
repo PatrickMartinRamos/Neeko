@@ -11,6 +11,7 @@ public class catMoveScript : MonoBehaviour
     //system var
     private Camera _camera;
     private NavMeshAgent _agent;
+    private catManagerScript _catManager;
 
     private bool isRotating = false;
     [SerializeField]
@@ -23,6 +24,7 @@ public class catMoveScript : MonoBehaviour
         _camera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
         _rb = GetComponent<Rigidbody>();
+        _catManager = GetComponent<catManagerScript>();
     }
 
     private void Update()
@@ -51,7 +53,6 @@ public class catMoveScript : MonoBehaviour
             isPlayerMoving = false;
             _rb.velocity = Vector3.zero;
         }
-
     }
 
     void rotateMotion()
@@ -80,4 +81,21 @@ public class catMoveScript : MonoBehaviour
         }
     }
     #endregion
+
+
+    public void walkMotionWASD(Vector2 input)
+    {
+        Vector3 direction = new Vector3(input.x, 0, input.y);
+        _rb.velocity = direction.normalized * _catManager.CatMoveSpeed;
+
+        if (direction != Vector3.zero)
+        {
+            RotateTowards(direction);
+        }
+    }
+    private void RotateTowards(Vector3 direction)
+    {
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+    }
 }
