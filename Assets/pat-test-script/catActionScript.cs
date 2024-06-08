@@ -18,7 +18,7 @@ public class catActionScript : MonoBehaviour
     [HideInInspector] public bool isPlayerMoving = false;
     [HideInInspector] public bool canDragObject = false;
     [HideInInspector] public bool isDragginObject = false;
-    [HideInInspector] public bool isNPCInteractable = false;
+     public bool isNPCInteractable = false;
     private Vector3 previousPOS;
 
     private interactableObjects _interActableObjects;
@@ -52,6 +52,7 @@ public class catActionScript : MonoBehaviour
     {
         if(isInsidePuddle && !isPlayerMoving)
         {
+            //lagay dito for water puddle interaction
             //Debug.Log("can interact");
         }
         else
@@ -66,6 +67,11 @@ public class catActionScript : MonoBehaviour
        {
            _interActableObjects.dragPuzzleObject();
        }
+    }
+
+    public void interactWithNPC()
+    {
+
     }
   
     private void OnDrawGizmos()
