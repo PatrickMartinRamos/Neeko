@@ -13,6 +13,7 @@ public class interactableObjects : MonoBehaviour
     private catController _catControllerScript;
     private npcManager _npcManager;
     public Transform playerTransform;
+    public PlayerStatusScriptable playerStatus;
     
     //public var
     public LayerMask puddleMask;
@@ -44,11 +45,13 @@ public class interactableObjects : MonoBehaviour
         {
             _catActionScript.isInsidePuddle = true;
             //Debug.Log("Player is inside the puddle!");
+            playerStatus.PlayerStatus = status.withWater;
         }
         else
         {
             _catActionScript.isInsidePuddle = false;
             //Debug.Log("Player is not inside the puddle.");
+            playerStatus.PlayerStatus = status.underSun;
         }
     }
     #endregion
@@ -65,6 +68,7 @@ public class interactableObjects : MonoBehaviour
             if(_catActionScript.isInsideShadow)
             {
                 Debug.Log("Player is inside the shadow!");
+                playerStatus.PlayerStatus = status.inShadow;
             }
         }
         else
@@ -73,6 +77,7 @@ public class interactableObjects : MonoBehaviour
             if(!_catActionScript.isInsideShadow)
             {
                 Debug.Log("Player is not inside the shadow!");
+                playerStatus.PlayerStatus = status.underSun;
             }
         }
     }

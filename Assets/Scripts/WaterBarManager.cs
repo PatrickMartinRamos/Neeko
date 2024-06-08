@@ -1,27 +1,22 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum status
+public class WaterBarManager : MonoBehaviour
 {
-    inShadow,
-    underSun,
-    withWater
-};
-public class HeatPointsManager : MonoBehaviour
-{
-    private Slider heatBar;
+    private Slider waterBar;
     private float increment = 0;
     [SerializeField] private status playerStatus;
-    public BarValuesScriptable playerHeatPt;
+    public BarValuesScriptable playerWaterDrop;
     private PlayerStatusScriptable playerCondition;
-    private bool canIncrease=true;
+    private bool canIncrease = true;
     // Start is called before the first frame update
     void Awake()
     {
-        heatBar = GetComponent<Slider>();
-        playerHeatPt.Amount = 0;
-        heatBar.value= 0;
+        waterBar = GetComponent<Slider>();
+        playerWaterDrop.Amount = 0;
+        waterBar.value = 0;
     }
 
     // Update is called once per frame
@@ -31,19 +26,16 @@ public class HeatPointsManager : MonoBehaviour
         switch (playerStatus)
         {
             case status.inShadow:
-                increment = -2;
+                increment = -1f;
                 break;
             case status.underSun:
-                increment = 5;
-                break;
-            case status.withWater:
-                increment = 2;
+                increment = -3f;
                 break;
             default:
                 break;
         }
-        if(canIncrease)
-        StartCoroutine(IncreaseHP(increment));
+        if (canIncrease)
+            StartCoroutine(IncreaseHP(increment));
 
     }
 
@@ -51,9 +43,10 @@ public class HeatPointsManager : MonoBehaviour
     {
         canIncrease = false;
         //heatBar.value = Mathf.Lerp(heatBar.value)
-        playerHeatPt.Amount = Mathf.Clamp(playerHeatPt.Amount+increment,0,100);
-        heatBar.value = playerHeatPt.Amount;
+        playerWaterDrop.Amount = Mathf.Clamp(playerWaterDrop.Amount+increment, 0, 100); ;
+        waterBar.value = playerWaterDrop.Amount;
         yield return new WaitForSeconds(1);
         canIncrease = true;
     }
+
 }
