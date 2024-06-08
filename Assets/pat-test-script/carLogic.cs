@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class carLogic : MonoBehaviour
 {
@@ -66,4 +68,6 @@ public class carLogic : MonoBehaviour
             randomSpeed = Random.Range(_carManager.SpeedRange.x, _carManager.SpeedRange.y);
         }   
     }
+
+    
 }

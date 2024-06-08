@@ -1,5 +1,7 @@
 using System.Collections;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum status
@@ -14,7 +16,7 @@ public class HeatPointsManager : MonoBehaviour
     private float increment = 0;
     [SerializeField] private status playerStatus;
     public BarValuesScriptable playerHeatPt;
-    private PlayerStatusScriptable playerCondition;
+    public PlayerStatusScriptable playerCondition;
     private bool canIncrease=true;
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +47,10 @@ public class HeatPointsManager : MonoBehaviour
         if(canIncrease)
         StartCoroutine(IncreaseHP(increment));
 
+        if(playerHeatPt.Amount == 100)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     IEnumerator IncreaseHP(float increment)
