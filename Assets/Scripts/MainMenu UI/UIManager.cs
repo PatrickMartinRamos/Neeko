@@ -47,15 +47,7 @@ public class UIManager : MonoBehaviour
         // Add Show Settings
 
     }
-    void HideSettings()
-    {
-
-    }
     void ShowControls()
-    {
-
-    }
-    void HideControls()
     {
 
     }
