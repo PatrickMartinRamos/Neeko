@@ -85,7 +85,7 @@ public class catController : MonoBehaviour
 
     public void NPCInteract(InputAction.CallbackContext context)
     {
-
+        _catActionScript.interactWithNPC();
     }
 
 }
