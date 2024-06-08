@@ -62,6 +62,15 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""walkingWASD"",
+                    ""type"": ""Value"",
+                    ""id"": ""83dea1e1-8144-4e1f-aa17-53ef3d31352a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -120,6 +129,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         m_playerMovements_Interact = m_playerMovements.FindAction("Interact", throwIfNotFound: true);
         m_playerMovements_dragObject = m_playerMovements.FindAction("dragObject", throwIfNotFound: true);
         m_playerMovements_NPCInteract = m_playerMovements.FindAction("NPCInteract", throwIfNotFound: true);
+        m_playerMovements_walkingWASD = m_playerMovements.FindAction("walkingWASD", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +195,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
     private readonly InputAction m_playerMovements_Interact;
     private readonly InputAction m_playerMovements_dragObject;
     private readonly InputAction m_playerMovements_NPCInteract;
+    private readonly InputAction m_playerMovements_walkingWASD;
     public struct PlayerMovementsActions
     {
         private @PlayerInputEditor m_Wrapper;
@@ -193,6 +204,7 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_playerMovements_Interact;
         public InputAction @dragObject => m_Wrapper.m_playerMovements_dragObject;
         public InputAction @NPCInteract => m_Wrapper.m_playerMovements_NPCInteract;
+        public InputAction @walkingWASD => m_Wrapper.m_playerMovements_walkingWASD;
         public InputActionMap Get() { return m_Wrapper.m_playerMovements; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +226,9 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
             @NPCInteract.started += instance.OnNPCInteract;
             @NPCInteract.performed += instance.OnNPCInteract;
             @NPCInteract.canceled += instance.OnNPCInteract;
+            @walkingWASD.started += instance.OnWalkingWASD;
+            @walkingWASD.performed += instance.OnWalkingWASD;
+            @walkingWASD.canceled += instance.OnWalkingWASD;
         }
 
         private void UnregisterCallbacks(IPlayerMovementsActions instance)
@@ -230,6 +245,9 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
             @NPCInteract.started -= instance.OnNPCInteract;
             @NPCInteract.performed -= instance.OnNPCInteract;
             @NPCInteract.canceled -= instance.OnNPCInteract;
+            @walkingWASD.started -= instance.OnWalkingWASD;
+            @walkingWASD.performed -= instance.OnWalkingWASD;
+            @walkingWASD.canceled -= instance.OnWalkingWASD;
         }
 
         public void RemoveCallbacks(IPlayerMovementsActions instance)
@@ -253,5 +271,6 @@ public partial class @PlayerInputEditor: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDragObject(InputAction.CallbackContext context);
         void OnNPCInteract(InputAction.CallbackContext context);
+        void OnWalkingWASD(InputAction.CallbackContext context);
     }
 }
