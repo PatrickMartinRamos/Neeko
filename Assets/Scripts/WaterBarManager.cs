@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +29,9 @@ public class WaterBarManager : MonoBehaviour
                 break;
             case status.underSun:
                 increment = -3f;
+                break;
+            case status.isRunning:
+                increment = -6f;
                 break;
             default:
                 break;
