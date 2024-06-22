@@ -34,10 +34,10 @@ public class catController : MonoBehaviour
 
     private void Update()
     {
-        if (walkAction != Vector2.zero)
-        {
-            _catMoveScript.walkMotionWASD(walkAction);
-        }
+        //if (walkAction != Vector2.zero)
+        //{
+        //    _catMoveScript.walkMotionWASD(walkAction);
+        //}
     }
 
     #region enable/disable input action
@@ -48,8 +48,8 @@ public class catController : MonoBehaviour
         _playerInputs.playerMovements.walkingWASD.performed += ctx => walkAction = ctx.ReadValue<Vector2>();
         _playerInputs.playerMovements.walkingWASD.canceled += ctx => walkAction = Vector2.zero;
 
-        _playerInputs.playerMovements.Walk.performed += WalkInput;
-        _playerInputs.playerMovements.Walk.canceled += WalkInput;
+        //_playerInputs.playerMovements.Walk.performed += WalkInput;
+        //_playerInputs.playerMovements.Walk.canceled += WalkInput;
 
         _playerInputs.playerMovements.Interact.performed += interactInput;
         _playerInputs.playerMovements.Interact.canceled += interactInput;
@@ -67,8 +67,8 @@ public class catController : MonoBehaviour
         _playerInputs.playerMovements.walkingWASD.performed -= ctx => walkAction = ctx.ReadValue<Vector2>();
         _playerInputs.playerMovements.walkingWASD.canceled -= ctx => walkAction = Vector2.zero;
 
-        _playerInputs.playerMovements.Walk.performed -= WalkInput;
-        _playerInputs.playerMovements.Walk.canceled -= WalkInput;
+        //_playerInputs.playerMovements.Walk.performed -= WalkInput;
+        //_playerInputs.playerMovements.Walk.canceled -= WalkInput;
 
         _playerInputs.playerMovements.Interact.performed -= interactInput;
         _playerInputs.playerMovements.Interact.canceled -= interactInput;
@@ -81,10 +81,10 @@ public class catController : MonoBehaviour
     }
     #endregion
 
-    public void WalkInput(InputAction.CallbackContext context)
-    {
-        _catMoveScript.WalkMotion();
-    }
+    //public void WalkInput(InputAction.CallbackContext context)
+    //{
+    //    _catMoveScript.WalkMotion();
+    //}
 
 
     public void interactInput(InputAction.CallbackContext context)

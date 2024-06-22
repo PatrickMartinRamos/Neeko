@@ -26,7 +26,7 @@ public class npcScript : MonoBehaviour
     private void Update()
     {
         walkNPC();
-       _rb.velocity = Vector3.zero;
+       //_rb.velocity = Vector3.zero;
     }
 
     public void setNPCSpeed(float speed)
@@ -46,11 +46,11 @@ public class npcScript : MonoBehaviour
 
     void walkNPC()
     {
-        //create event kung mag interacti si player start moving na ung npc
         if(npcStartMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPOS.position, moveSpeed * Time.deltaTime);
-            transform.LookAt(targetPOS);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPOS.position.x, transform.position.y, targetPOS.position.z), moveSpeed * Time.deltaTime);
+            //transform.LookAt(targetPOS);
+            Debug.DrawLine(transform.position, targetPOS.position, Color.red);
         }    
         
     }

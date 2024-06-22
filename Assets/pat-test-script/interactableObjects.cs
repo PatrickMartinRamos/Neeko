@@ -37,14 +37,14 @@ public class interactableObjects : MonoBehaviour
     }
 
     #region check if player is inside the puddle
-    void puddleCheck()
+    void puddleCheck()//check player if inside the water puddle
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position,_catActionScript.interactRadius, puddleMask);
 
         if (colliders.Length > 0)
         {
             _catActionScript.isInsidePuddle = true;
-            //Debug.Log("Player is inside the puddle!");
+            Debug.Log("Player is inside the puddle!");
             playerStatus.PlayerStatus = status.withWater;
         }
         else
