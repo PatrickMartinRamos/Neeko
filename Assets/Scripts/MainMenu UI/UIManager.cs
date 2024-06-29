@@ -4,10 +4,10 @@ using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] CanvasGroup initialPromptCG;
-    [SerializeField] CanvasGroup mainMenuCG;
-    [SerializeField] CanvasGroup settingsCG;
-    [SerializeField] CanvasGroup controlsCG;
+    [SerializeField] private CanvasGroup initialPromptCG;
+    [SerializeField] private CanvasGroup mainMenuCG;
+    [SerializeField] private CanvasGroup settingsCG;
+    [SerializeField] private CanvasGroup controlsCG;
     float fadeDuration = 1f;
     Tween fadeTween;
     public UnityEvent onPlay = new UnityEvent();

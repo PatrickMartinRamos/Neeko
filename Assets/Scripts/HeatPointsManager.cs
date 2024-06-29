@@ -7,7 +7,8 @@ public enum status
 {
     inShadow,
     underSun,
-    withWater
+    withWater,
+    isRunning
 };
 public class HeatPointsManager : MonoBehaviour
 {
