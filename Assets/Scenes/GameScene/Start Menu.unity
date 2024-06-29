@@ -3697,7 +3697,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Insert Controls Here]'
+  m_text: 'Q = To Interact
+
+    Left Mouse Button = To move to target location'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3724,7 +3726,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.2
+  m_fontSize: 20.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4352,7 +4354,7 @@ Transform:
   m_GameObject: {fileID: 1662921926}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12631427, y: 0, z: -0, w: 0.9919903}
-  m_LocalPosition: {x: -0.013714703, y: 0.7954472, z: -0.9371644}
+  m_LocalPosition: {x: -0.013714704, y: 0.79544723, z: -0.9371645}
   m_LocalScale: {x: 0.45715356, y: 0.4571536, z: 0.4571536}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4409,7 +4411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1729020888
 RectTransform:
   m_ObjectHideFlags: 0
