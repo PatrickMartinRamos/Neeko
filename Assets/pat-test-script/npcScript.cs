@@ -10,10 +10,12 @@ public class npcScript : MonoBehaviour
     private float moveSpeed;
     private Rigidbody _rb;
     private bool npcStartMoving = false;
+    private Animator animator;
 
     private void Awake()
     {
         _npcManager = FindObjectOfType<npcManager>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -50,8 +52,13 @@ public class npcScript : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPOS.position.x, transform.position.y, targetPOS.position.z), moveSpeed * Time.deltaTime);
             //transform.LookAt(targetPOS);
+            animator.SetBool("IsWalking", true);
             Debug.DrawLine(transform.position, targetPOS.position, Color.red);
-        }    
+        }
+        if(transform.position == new Vector3(targetPOS.position.x, transform.position.y,transform.position.z))
+        {
+            animator.SetBool("IsWalking", false);
+        }
         
     }
 }
