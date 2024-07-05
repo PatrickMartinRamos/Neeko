@@ -32,7 +32,7 @@ public class interactableObjects : MonoBehaviour
         puddleCheck();
         shadowCheck();
         dragPuzzleObject();
-        // puzzleObjectCheck();
+        //puzzleObjectCheck();
         //NPCInteractions();
     }
 
