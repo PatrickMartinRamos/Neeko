@@ -13,6 +13,7 @@ public class interactableObjects : MonoBehaviour
     private catController _catControllerScript;
     private npcManager _npcManager;
     public Transform playerTransform;
+    public PlayerStatusScriptable playerStatus;
     
     //public var
     public LayerMask puddleMask;
@@ -31,24 +32,26 @@ public class interactableObjects : MonoBehaviour
         puddleCheck();
         shadowCheck();
         dragPuzzleObject();
-        // puzzleObjectCheck();
+        //puzzleObjectCheck();
         //NPCInteractions();
     }
 
     #region check if player is inside the puddle
-    void puddleCheck()
+    void puddleCheck()//check player if inside the water puddle
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position,_catActionScript.interactRadius, puddleMask);
 
         if (colliders.Length > 0)
         {
             _catActionScript.isInsidePuddle = true;
-            //Debug.Log("Player is inside the puddle!");
+            Debug.Log("Player is inside the puddle!");
+            playerStatus.PlayerStatus = status.withWater;
         }
         else
         {
             _catActionScript.isInsidePuddle = false;
             //Debug.Log("Player is not inside the puddle.");
+            playerStatus.PlayerStatus = status.underSun;
         }
     }
     #endregion
@@ -65,6 +68,7 @@ public class interactableObjects : MonoBehaviour
             if(_catActionScript.isInsideShadow)
             {
                 Debug.Log("Player is inside the shadow!");
+                playerStatus.PlayerStatus = status.inShadow;
             }
         }
         else
@@ -73,6 +77,7 @@ public class interactableObjects : MonoBehaviour
             if(!_catActionScript.isInsideShadow)
             {
                 Debug.Log("Player is not inside the shadow!");
+                playerStatus.PlayerStatus = status.underSun;
             }
         }
     }

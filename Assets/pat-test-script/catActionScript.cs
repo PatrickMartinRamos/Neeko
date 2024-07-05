@@ -39,7 +39,7 @@ public class catActionScript : MonoBehaviour
         isPlayerMoving = IsPlayerMoving();
     }
 
-    bool IsPlayerMoving()
+    bool IsPlayerMoving()//check if player is moving
     {
         bool moving = transform.position != previousPOS;
 
@@ -50,6 +50,7 @@ public class catActionScript : MonoBehaviour
 
     public void puddleInteraction()
     {
+        //player can only interact if not moving 
         if(isInsidePuddle && !isPlayerMoving)
         {
             //lagay dito for water puddle interaction
@@ -57,7 +58,7 @@ public class catActionScript : MonoBehaviour
         }
         else
         {
-           // Debug.Log("can't interact");
+            //Debug.Log("can't interact");
         }
     }
 

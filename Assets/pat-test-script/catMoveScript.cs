@@ -82,7 +82,7 @@ public class catMoveScript : MonoBehaviour
     }
     #endregion
 
-
+    #region
     public void walkMotionWASD(Vector2 input)
     {
         Vector3 direction = new Vector3(input.x, 0, input.y);
@@ -98,4 +98,5 @@ public class catMoveScript : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
+    #endregion
 }
