@@ -83,24 +83,27 @@ public class interactableObjects : MonoBehaviour
     }
     #endregion
 
-    #region check if player can interacti with npcs
+    #region check if player can interact with npcs
+    //pass this to cat action script
+    //if NPC layermask is inside the player radius of interaction do this logic
+    //called by pressing "Q" key
     public void NPCInteractions()
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius,NPCLayerMask);
-
         foreach (Collider collider in colliders)
         {
             npcScript npc = collider.GetComponent<npcScript>();//get npc script when near the npc
             if (npc != null)    
             {
-                //naka automatic pa to need ung interact button to triiger ung movement
+                //can now interact with npc
                 _catActionScript.isNPCInteractable = true;
-                npc.startNPCEvent(true); // Start NPC movement
+                //flag the npcScript canStartNPCEvent that if this logic is called start moving
+                npc.canStartNPCEvent(true); 
             }
         }
-
         if (colliders.Length == 0)
         {
+            //make the npc not interactable
             _catActionScript.isNPCInteractable = false;
         }
     }

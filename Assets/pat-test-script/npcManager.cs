@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,14 +11,26 @@ public class NPCLogic
     public Transform targetPosition;
     [SerializeField] private float npcMovepeed;
     public float NpcMovepeed => npcMovepeed;
-    public bool isUsingUmbrella = false;
+}
+
+[System.Serializable]
+public class NonInteractableNPC
+{
+    public GameObject nonIntNPCPrefab;
+    public List<Transform> destinationPoint;
+    [SerializeField] private float nonIntNPCSpeed;
+    public float NonIntNPCSpeed => nonIntNPCSpeed;
 }
 
 public class npcManager : MonoBehaviour
 {
     public List<NPCLogic> NPC;
+    public List<NonInteractableNPC> nonInteractableNPCs;
+
     private npcScript _npcScript;
     private catActionScript _catActionScript;
+
+    #region start/update/awake
     private void Awake()
     {
         _catActionScript = FindObjectOfType<catActionScript>();
@@ -28,26 +41,63 @@ public class npcManager : MonoBehaviour
     {
         AssignTargetPositions();
         AssignSpeedToNPC();
+        AssignNonInteractableNPCDestinations();
+        AssignSpeedToNonInteractableNPC();
     }
-    private void Update()
-    {
-        
-    }
+    #endregion
+
+    #region AssignTargetPositions
     public void AssignTargetPositions()
     {
-        for (int i = 0; i < NPC.Count; i++)
+        //for (int i = 0; i < NPC.Count; i++)
+        //{
+        //    NPCLogic npc = NPC[i];
+        //    npc.NPCPrefab.GetComponent<npcScript>().setTargetNPCPos(npc.targetPosition);
+        //}
+
+        foreach (var npc in NPC)
         {
-            NPCLogic npc = NPC[i];
             npc.NPCPrefab.GetComponent<npcScript>().setTargetNPCPos(npc.targetPosition);
         }
     }
+    #endregion
 
+    #region AssignSpeedToNPC
     public void AssignSpeedToNPC()
     {
-        for(int i = 0; i < NPC.Count; i++)
+        //for(int i = 0; i < NPC.Count; i++)
+        //{
+        //    NPCLogic npc = NPC[i];
+        //    npc.NPCPrefab.GetComponent<npcScript>().setNPCSpeed(npc.NpcMovepeed);
+        //}
+
+        //assign each npc different speed
+        foreach (var npc in NPC)
         {
-            NPCLogic npc = NPC[i];
             npc.NPCPrefab.GetComponent<npcScript>().setNPCSpeed(npc.NpcMovepeed);
         }
     }
+    #endregion
+
+    #region AssignNonInteractableNPCDestinations
+    public void AssignNonInteractableNPCDestinations()
+    {
+        //set destination for each non interactable npcs
+        foreach (var nonIntNPC in nonInteractableNPCs)
+        {
+            nonIntNPC.nonIntNPCPrefab.GetComponent<nonInteractableNPCScript>().destinations = nonIntNPC.destinationPoint;
+        }
+    }
+    #endregion
+
+    #region
+    public void AssignSpeedToNonInteractableNPC()
+    {
+        //set speed for non interactable npc
+       foreach(var nonIntNPC in nonInteractableNPCs)
+        {
+            nonIntNPC.nonIntNPCPrefab.GetComponent<nonInteractableNPCScript>().setNonInteractableNPCSpeed(nonIntNPC.NonIntNPCSpeed);
+        }
+    }
+    #endregion
 }

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 3274745595734374780}
   - component: {fileID: 2771884031163828971}
   - component: {fileID: 2344614777804926339}
-  - component: {fileID: 8009900269823689333}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8009900269823689333
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3821586597836228381}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8127
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 06642fcee24a51144922646f585e2cac, type: 3}
 --- !u!1 &5580913900375340680
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +97,8 @@ GameObject:
   - component: {fileID: 8738962770277985472}
   - component: {fileID: 2304794636806743889}
   - component: {fileID: 8051681893241978642}
-  m_Layer: 0
+  - component: {fileID: 4623938638766807247}
+  m_Layer: 14
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,9 +189,25 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 06642fcee24a51144922646f585e2cac, type: 3}
+--- !u!208 &4623938638766807247
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580913900375340680}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.030000001, y: 0.002, z: 0.017}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.004, z: -0.002}
+  m_TimeToStationary: 0.5
 --- !u!1 &5719715009845902308
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3142261617764406784}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Road Barrier Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,8 +234,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3274745595734374780}
   - {fileID: 8428520807616932269}

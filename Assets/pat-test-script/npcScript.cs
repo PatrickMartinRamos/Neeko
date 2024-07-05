@@ -1,64 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class npcScript : MonoBehaviour
 {
-
     private npcManager _npcManager;
     private Transform targetPOS;
     private float moveSpeed;
-    private Rigidbody _rb;
-    private bool npcStartMoving = false;
+    private NavMeshAgent _navMeshAgent;
     private Animator animator;
+    private bool npcStartMoving = false;
+
 
     private void Awake()
     {
         _npcManager = FindObjectOfType<npcManager>();
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void Start()
-    {
-        //setTargetNPCPos(targetPOS);
-        //setNPCSpeed();
-        _rb = GetComponent<Rigidbody>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        walkNPC();
-       //_rb.velocity = Vector3.zero;
-    }
+        if (npcStartMoving)
+        {
+            //move this npc using navmesh set destination then target position is assigned by npc manager
+            _navMeshAgent.SetDestination(new Vector3(targetPOS. position.x, transform.position.y, targetPOS.position.z  ));
+            animator.SetBool("IsWalking", true);
+        }
 
+        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        {
+            if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.magnitude == 0f)
+            {
+                animator.SetBool("IsWalking", false);
+            }
+        }
+    }
+    //use speed assign in npc manager
     public void setNPCSpeed(float speed)
     {
-        moveSpeed = speed;
+        _navMeshAgent.speed = speed;
     }
-
+    //use target position assign in the npc manager
     public void setTargetNPCPos(Transform target)
     {
         targetPOS = target;
     }
 
-    public void startNPCEvent(bool startWalking)
+    public void canStartNPCEvent(bool startWalking)
     {
+        //if NPCInteractions is called in interactableObject start the NPC movement
         npcStartMoving = startWalking;
-    }
-
-    void walkNPC()
-    {
-        if(npcStartMoving)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPOS.position.x, transform.position.y, targetPOS.position.z), moveSpeed * Time.deltaTime);
-            //transform.LookAt(targetPOS);
-            animator.SetBool("IsWalking", true);
-            Debug.DrawLine(transform.position, targetPOS.position, Color.red);
-        }
-        if(transform.position == new Vector3(targetPOS.position.x, transform.position.y,transform.position.z))
-        {
-            animator.SetBool("IsWalking", false);
-        }
-        
     }
 }

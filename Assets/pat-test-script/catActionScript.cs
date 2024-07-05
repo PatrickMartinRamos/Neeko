@@ -72,6 +72,7 @@ public class catActionScript : MonoBehaviour
 
     public void interactWithNPC()
     {
+        //get NPCInteraction logic and pass it to NPC interact in catController
         _interActableObjects.NPCInteractions();
     }
   

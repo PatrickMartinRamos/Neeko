@@ -15,19 +15,19 @@ public class catController : MonoBehaviour
     private PlayerInputEditor _playerInputs;
     private catMoveScript _catMoveScript;
     private catActionScript _catActionScript;
+    private InteractUI _interactUI;
 
     private Vector2 walkAction;
 
     //public Subject<bool> TestSubject;
-
-
     //private interactableObjects _interactableObjects;
-
+    #region start/update/awake
     private void Awake()
     {
         _playerInputs = new PlayerInputEditor();
         _catMoveScript = GetComponent<catMoveScript>();
         _catActionScript = GetComponent<catActionScript>();
+        _interactUI = FindObjectOfType<InteractUI>();
 
         //_interactableObjects = GetComponent<interactableObjects>();
     }
@@ -39,6 +39,7 @@ public class catController : MonoBehaviour
         //    _catMoveScript.walkMotionWASD(walkAction);
         //}
     }
+    #endregion
 
     #region enable/disable input action
     private void OnEnable()
@@ -102,6 +103,7 @@ public class catController : MonoBehaviour
 
     public void NPCInteract(InputAction.CallbackContext context)
     {
+        //if "Q" key is press it will call interactWithNPC
         _catActionScript.interactWithNPC();
     }
 
