@@ -51,10 +51,11 @@ public class catActionScript : MonoBehaviour
     public void puddleInteraction()
     {
         //player can only interact if not moving 
-        if(isInsidePuddle && !isPlayerMoving)
+        if(isInsidePuddle)
         {
             //lagay dito for water puddle interaction
-            //Debug.Log("can interact");
+            Debug.Log("can interact with water");
+            _interActableObjects.puddleCheck();
         }
         else
         {
