@@ -17,10 +17,17 @@ public class SpawnPoint
 
 public class carSpawnManager : MonoBehaviour
 {
+    private audioManager _audioManagerInstance;
     public List<SpawnPoint> spawnPoints; // List of spawn points
+
+    private void Awake()
+    {
+        _audioManagerInstance = audioManager.instance;
+    }
 
     private void Start()
     {
+        playCarAmbience();
         foreach (var spawnPoint in spawnPoints)
         {
             spawnPoint.spawnInterval = Random.Range(spawnPoint.spawnIntervalRange.x, spawnPoint.spawnIntervalRange.y);
@@ -57,5 +64,9 @@ public class carSpawnManager : MonoBehaviour
                 carLogicScript.SetTarget(spawnPoint.targetPoint);
             }
         }
+    }
+    void playCarAmbience()
+    {
+        _audioManagerInstance.Play("CarAmbience");
     }
 }

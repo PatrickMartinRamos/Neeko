@@ -8,6 +8,7 @@ public class tutorialScript : MonoBehaviour
     public GameObject closeButton; // Reference to the close button
     private int currentIndex = 0; // Index of the currently active tutorial
     public GameObject TutorialUI;
+    private audioManager _audioManagerInstance;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,9 @@ public class tutorialScript : MonoBehaviour
         TutorialUI.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        _audioManagerInstance = audioManager.instance;
     }
 
     public void ShowNextTutorial()
@@ -28,6 +28,7 @@ public class tutorialScript : MonoBehaviour
         tutorials[currentIndex].SetActive(false);
         currentIndex = (currentIndex + 1) % tutorials.Count;
         ShowCurrentTutorial();
+        playButtonSFX();
     }
 
     public void ShowPreviousTutorial()
@@ -35,6 +36,7 @@ public class tutorialScript : MonoBehaviour
         tutorials[currentIndex].SetActive(false);
         currentIndex = (currentIndex - 1 + tutorials.Count) % tutorials.Count;
         ShowCurrentTutorial();
+        playButtonSFX();
     }
 
     private void ShowCurrentTutorial()
@@ -52,10 +54,16 @@ public class tutorialScript : MonoBehaviour
 
     public void CloseTutorial()
     {
+        playButtonSFX();
         TutorialUI.SetActive(false);
         closeButton.SetActive(false);
         ResumeGame();
         HideCursor();
+    }
+
+    void playButtonSFX()
+    {
+        _audioManagerInstance.Play("ButtonSFX");
     }
 
     private void PauseGame()
