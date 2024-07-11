@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +31,7 @@ public class HeatPointsManager : MonoBehaviour
     void Update()
     {
         playerStatus = playerCondition.PlayerStatus;
+        level playerLevel = playerCondition.PlayerLevel;
         switch (playerStatus)
         {
             case status.inShadow:
@@ -47,8 +49,25 @@ public class HeatPointsManager : MonoBehaviour
             default:
                 break;
         }
-        if(canIncrease)
-        StartCoroutine(IncreaseHP(increment));
+        if (canIncrease)
+        {
+            switch (playerLevel)
+            {
+                case level.one:
+                    StartCoroutine(IncreaseHP(increment));
+                    break;
+                case level.two:
+                    increment = increment > 0 ? increment *= 1.5f : increment *= 0.8f;
+                    StartCoroutine(IncreaseHP(increment));
+                    break;
+                case level.three:
+                    increment = increment > 0 ? increment *= 2f : increment *= 0.5f;
+                    StartCoroutine(IncreaseHP(increment));
+                    break;
+                default: break;
+            }
+        }
+        
 
         if(playerHeatPt.Amount == 100)
         {

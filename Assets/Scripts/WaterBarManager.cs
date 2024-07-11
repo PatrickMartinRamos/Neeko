@@ -40,7 +40,14 @@ public class WaterBarManager : MonoBehaviour
                 break;
         }
         if (canIncrease)
-            StartCoroutine(IncreaseHP(increment));
+        {
+            if(playerCondition.isRunning)
+            {
+                StartCoroutine(IncreaseHP(increment*2));
+            }
+            else StartCoroutine(IncreaseHP(increment));
+        }
+
 
     }
 

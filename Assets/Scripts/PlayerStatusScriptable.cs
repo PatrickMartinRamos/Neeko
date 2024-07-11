@@ -4,5 +4,20 @@ using UnityEngine;
 public class PlayerStatusScriptable : ScriptableObject
 {
     public BarValuesScriptable playerWaterDrop;
+    public BarValuesScriptable playerHeatPt;
     public status PlayerStatus;
+    public level PlayerLevel;
+    public bool isRunning;
+    private void Awake()
+    {
+        isRunning= false;
+        PlayerLevel = level.one;
+    }
 }
+
+public enum level
+{
+    one,
+    two,
+    three
+};
