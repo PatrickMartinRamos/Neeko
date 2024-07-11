@@ -14,6 +14,7 @@ public class tutorialScript : MonoBehaviour
     {
         ShowCurrentTutorial();
         PauseGame();
+        TutorialUI.SetActive(true);
     }
 
     // Update is called once per frame
@@ -54,6 +55,7 @@ public class tutorialScript : MonoBehaviour
         TutorialUI.SetActive(false);
         closeButton.SetActive(false);
         ResumeGame();
+        HideCursor();
     }
 
     private void PauseGame()
@@ -65,7 +67,13 @@ public class tutorialScript : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
-    
+
+    private void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     //public void ActivateTutorialUI()
     //{
     //    TutorialUI.SetActive(true);
