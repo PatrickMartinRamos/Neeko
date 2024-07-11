@@ -33,6 +33,9 @@ public class WaterBarManager : MonoBehaviour
             case status.isRunning:
                 increment = -6f;
                 break;
+            case status.withWater:
+                increment = 2f;
+                break;
             default:
                 break;
         }

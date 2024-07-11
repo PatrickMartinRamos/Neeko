@@ -18,7 +18,7 @@ public class catActionScript : MonoBehaviour
     [HideInInspector] public bool isPlayerMoving = false;
     [HideInInspector] public bool canDragObject = false;
     [HideInInspector] public bool isDragginObject = false;
-     public bool isNPCInteractable = false;
+    public bool isNPCInteractable = false;
     private Vector3 previousPOS;
 
     private interactableObjects _interActableObjects;
