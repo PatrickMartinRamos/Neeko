@@ -32,12 +32,12 @@ public class interactableObjects : MonoBehaviour
         puddleCheck();
         shadowCheck();
         dragPuzzleObject();
-        // puzzleObjectCheck();
+        //puzzleObjectCheck();
         //NPCInteractions();
     }
 
     #region check if player is inside the puddle
-    void puddleCheck()//check player if inside the water puddle
+    public void puddleCheck()//check player if inside the water puddle
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position,_catActionScript.interactRadius, puddleMask);
 
@@ -45,13 +45,12 @@ public class interactableObjects : MonoBehaviour
         {
             _catActionScript.isInsidePuddle = true;
             Debug.Log("Player is inside the puddle!");
-            playerStatus.PlayerStatus = status.withWater;
+            playerStatus.PlayerStatus = status.inWater;
         }
         else
         {
             _catActionScript.isInsidePuddle = false;
             //Debug.Log("Player is not inside the puddle.");
-            playerStatus.PlayerStatus = status.underSun;
         }
     }
     #endregion
@@ -74,33 +73,46 @@ public class interactableObjects : MonoBehaviour
         else
         {
             _catActionScript.isInsideShadow = false;
-            if(!_catActionScript.isInsideShadow)
+            if(!_catActionScript.isInsideShadow && _catActionScript.isInsidePuddle == false)
             {
-                Debug.Log("Player is not inside the shadow!");
-                playerStatus.PlayerStatus = status.underSun;
+                if(playerStatus.playerWaterDrop.Amount <= 0)
+                {
+                    Debug.Log("Player is not inside the shadow!");
+                    playerStatus.PlayerStatus = status.underSun;
+                }
+                else if (playerStatus.playerWaterDrop.Amount > 0)
+                {
+                    Debug.Log("Player has water!");
+                    playerStatus.PlayerStatus = status.withWater;
+                }
+
             }
+
         }
     }
     #endregion
 
-    #region check if player can interacti with npcs
+    #region check if player can interact with npcs
+    //pass this to cat action script
+    //if NPC layermask is inside the player radius of interaction do this logic
+    //called by pressing "Q" key
     public void NPCInteractions()
     {
         Collider[] colliders = Physics.OverlapSphere(playerTransform.position, _catActionScript.interactRadius,NPCLayerMask);
-
         foreach (Collider collider in colliders)
         {
             npcScript npc = collider.GetComponent<npcScript>();//get npc script when near the npc
             if (npc != null)    
             {
-                //naka automatic pa to need ung interact button to triiger ung movement
+                //can now interact with npc
                 _catActionScript.isNPCInteractable = true;
-                npc.startNPCEvent(true); // Start NPC movement
+                //flag the npcScript canStartNPCEvent that if this logic is called start moving
+                npc.canStartNPCEvent(true); 
             }
         }
-
         if (colliders.Length == 0)
         {
+            //make the npc not interactable
             _catActionScript.isNPCInteractable = false;
         }
     }

@@ -5,10 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class catManagerScript : MonoBehaviour
 {
-    public float heatMeter;
-
-    [SerializeField] private float catMoveSpeed;
-    public float CatMoveSpeed => catMoveSpeed = 5f;
+    //public float heatMeter;
 
     private void OnCollisionEnter(Collision collision)
     {

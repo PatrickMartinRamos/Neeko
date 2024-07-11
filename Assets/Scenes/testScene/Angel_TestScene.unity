@@ -519,6 +519,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3638741951934569609, guid: 85ff47bd04435d2499bd6d793916a292, type: 3}
+      propertyPath: playerHeatPt
+      value: 
+      objectReference: {fileID: 11400000, guid: 67838f9a55a2b8948ae4320334580dfa, type: 2}
+    - target: {fileID: 3638741951934569609, guid: 85ff47bd04435d2499bd6d793916a292, type: 3}
+      propertyPath: playerCondition
+      value: 
+      objectReference: {fileID: 11400000, guid: d5567273735a9244894eba0b320c4cba, type: 2}
     - target: {fileID: 8271030483229304984, guid: 85ff47bd04435d2499bd6d793916a292, type: 3}
       propertyPath: m_Name
       value: Canvas
