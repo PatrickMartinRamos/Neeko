@@ -7,8 +7,8 @@ public class WaterBarManager : MonoBehaviour
     private Slider waterBar;
     private float increment = 0;
     [SerializeField] private status playerStatus;
-    public BarValuesScriptable playerWaterDrop;
-    public PlayerStatusScriptable playerCondition;
+    [SerializeField] private BarValuesScriptable playerWaterDrop;
+    [SerializeField] private PlayerStatusScriptable playerCondition;
     private bool canIncrease = true;
     // Start is called before the first frame update
     void Awake()
@@ -27,14 +27,14 @@ public class WaterBarManager : MonoBehaviour
             case status.inShadow:
                 increment = -1f;
                 break;
-            case status.underSun:
-                increment = -3f;
-                break;
-            case status.isRunning:
-                increment = -6f;
-                break;
             case status.withWater:
-                increment = 2f;
+                increment = -5f;
+                break;
+            case status.inWater:
+                increment = 5f;
+                break;
+            case status.underSun:
+                increment = 0;
                 break;
             default:
                 break;

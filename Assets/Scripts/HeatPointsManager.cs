@@ -8,15 +8,15 @@ public enum status
     inShadow,
     underSun,
     withWater,
-    isRunning
+    inWater
 };
 public class HeatPointsManager : MonoBehaviour
 {
     private Slider heatBar;
     private float increment = 0;
     [SerializeField] private status playerStatus;
-    public BarValuesScriptable playerHeatPt;
-    public PlayerStatusScriptable playerCondition;
+    [SerializeField] private BarValuesScriptable playerHeatPt;
+    [SerializeField] private PlayerStatusScriptable playerCondition;
     private bool canIncrease=true;
     // Start is called before the first frame update
     void Awake()
@@ -33,12 +33,15 @@ public class HeatPointsManager : MonoBehaviour
         switch (playerStatus)
         {
             case status.inShadow:
-                increment = -2;
+                increment = -3;
                 break;
             case status.underSun:
                 increment = 5;
                 break;
             case status.withWater:
+                increment = 2;
+                break;
+            case status.inWater:
                 increment = 2;
                 break;
             default:

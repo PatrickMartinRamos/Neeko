@@ -44,14 +44,13 @@ public class interactableObjects : MonoBehaviour
         if (colliders.Length > 0)
         {
             _catActionScript.isInsidePuddle = true;
-            //Debug.Log("Player is inside the puddle!");
-            playerStatus.PlayerStatus = status.withWater;
+            Debug.Log("Player is inside the puddle!");
+            playerStatus.PlayerStatus = status.inWater;
         }
         else
         {
             _catActionScript.isInsidePuddle = false;
             //Debug.Log("Player is not inside the puddle.");
-            playerStatus.PlayerStatus = status.underSun;
         }
     }
     #endregion
@@ -74,11 +73,21 @@ public class interactableObjects : MonoBehaviour
         else
         {
             _catActionScript.isInsideShadow = false;
-            if(!_catActionScript.isInsideShadow)
+            if(!_catActionScript.isInsideShadow && _catActionScript.isInsidePuddle == false)
             {
-                Debug.Log("Player is not inside the shadow!");
-                playerStatus.PlayerStatus = status.underSun;
+                if(playerStatus.playerWaterDrop.Amount <= 0)
+                {
+                    Debug.Log("Player is not inside the shadow!");
+                    playerStatus.PlayerStatus = status.underSun;
+                }
+                else if (playerStatus.playerWaterDrop.Amount > 0)
+                {
+                    Debug.Log("Player has water!");
+                    playerStatus.PlayerStatus = status.withWater;
+                }
+
             }
+
         }
     }
     #endregion
