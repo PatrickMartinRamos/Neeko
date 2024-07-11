@@ -7,7 +7,7 @@ public class InteractUI : MonoBehaviour
     private Transform playerPos; 
     private catActionScript _catActionScript;
     private npcScript _npcScript;
-    public LayerMask NPCLayerMask;
+    public LayerMask UITriggerLayerMask;
     private string playerTag = "Player";
     public GameObject interactUIPrefab;
 
@@ -18,17 +18,17 @@ public class InteractUI : MonoBehaviour
     }
     void Update()
     {
-        showIneractUI();
+        showNPCInteractUI();
     }
     #region promot interact
-    void showIneractUI()
+    void showNPCInteractUI()
     {
         //find player using tag
         GameObject [] objectsWithTag = GameObject.FindGameObjectsWithTag(playerTag);
         //get player position
         playerPos = objectsWithTag[0].transform;
 
-        Collider[] colliders = Physics.OverlapSphere(playerPos.position, _catActionScript.interactRadius, NPCLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(playerPos.position, _catActionScript.interactRadius, UITriggerLayerMask);
 
         if (colliders.Length > 0)
         {

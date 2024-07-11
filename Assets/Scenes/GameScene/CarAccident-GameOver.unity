@@ -559,7 +559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835444359}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.528816, y: 0.39793882, z: -0.30786598, w: 0.68353266}
+  m_LocalRotation: {x: 0.52881604, y: 0.39793888, z: -0.30786604, w: 0.68353266}
   m_LocalPosition: {x: -1.08, y: 4.99, z: -9.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1087,8 +1087,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bawal Tumawid! Nakakamatay!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b899ebd0f15b0834abcd52f51ed91844, type: 2}
+  m_sharedMaterial: {fileID: -1928319055869013223, guid: b899ebd0f15b0834abcd52f51ed91844, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.4
+  m_fontSize: 64.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1289,8 +1289,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b899ebd0f15b0834abcd52f51ed91844, type: 2}
+  m_sharedMaterial: {fileID: -1928319055869013223, guid: b899ebd0f15b0834abcd52f51ed91844, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.2
+  m_fontSize: 46.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1553,7 +1553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861456571}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.528816, y: 0.39793882, z: -0.30786598, w: 0.68353266}
+  m_LocalRotation: {x: 0.52881604, y: 0.39793888, z: -0.30786604, w: 0.68353266}
   m_LocalPosition: {x: -2.4034348, y: 10.43046, z: -9.086166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
