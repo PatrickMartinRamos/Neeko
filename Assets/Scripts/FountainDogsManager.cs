@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FountainDogsManager : MonoBehaviour
 {
     private Transform puddle;
     [SerializeField] private List<Animator> _animators = new List<Animator>(); // Initialize the list
+    public static UnityEvent onFountainQuestComplete = new UnityEvent();
+    private bool completed = false;
+
 
     void Start()
     {
@@ -26,14 +31,17 @@ public class FountainDogsManager : MonoBehaviour
 
     void Update()
     {
-        if (puddle != null && puddle.transform.localPosition.z >= 0.35f)
+
+        if (completed == false && puddle != null && puddle.transform.localPosition.z >= 0.35f)
         {
+            completed = true;
+            onFountainQuestComplete.Invoke();
             foreach (var animator in _animators)
             {
                 animator.SetBool("Move", true);
             }
         }
-        else
+        else if (puddle.transform.localPosition.z < 0.35f)
         {
             foreach (var animator in _animators)
             {
@@ -43,11 +51,19 @@ public class FountainDogsManager : MonoBehaviour
 
     }
 
-    public void IncreaseWater()
+    private void IncreaseWater()
     {
         if (puddle != null)
         {
-            puddle.transform.position = new Vector3(puddle.transform.position.x, puddle.transform.position.y, puddle.transform.position.z + 0.07f);
+            puddle.transform.localPosition = new Vector3(puddle.transform.localPosition.x, puddle.transform.localPosition.y, Mathf.Clamp(puddle.transform.localPosition.z + 0.07f,0,0.35f));
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "WaterBottle")
+        {
+            IncreaseWater();
+            Destroy(collision.gameObject);
         }
     }
 }
