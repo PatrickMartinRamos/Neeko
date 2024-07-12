@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathSceneScript : MonoBehaviour
 {
@@ -20,5 +21,9 @@ public class DeathSceneScript : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(deathLine.DOFade(1, 0.5f));
         seq.Append(backBtn.DOScale(1, 0.5f));
+    }
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }
