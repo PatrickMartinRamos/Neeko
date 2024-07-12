@@ -18,6 +18,7 @@ public class catActionScript : MonoBehaviour
     [HideInInspector] public bool isPlayerMoving = false;
     [HideInInspector] public bool canDragObject = false;
     [HideInInspector] public bool isDragginObject = false;
+    [SerializeField] private PlayerStatusScriptable playerStatus;
     public bool isNPCInteractable = false;
     private Vector3 previousPOS;
 
@@ -54,6 +55,7 @@ public class catActionScript : MonoBehaviour
         if(isInsidePuddle)
         {
             //lagay dito for water puddle interaction
+            playerStatus.PlayerStatus = status.inWater;
             Debug.Log("can interact with water");
             _interActableObjects.puddleCheck();
         }
@@ -81,5 +83,12 @@ public class catActionScript : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, interactRadius);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<levelChanger>() != null)
+        {
+            other.gameObject.GetComponent<levelChanger>().ChangeLevel(playerStatus);
+        }
     }
 }

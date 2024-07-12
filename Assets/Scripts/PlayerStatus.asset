@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
   playerWaterDrop: {fileID: 11400000, guid: 344a70ffa4b0ac041b41e2388ae0d221, type: 2}
-  PlayerStatus: 0
+  playerHeatPt: {fileID: 11400000, guid: 67838f9a55a2b8948ae4320334580dfa, type: 2}
+  PlayerStatus: 1
+  PlayerLevel: 1
+  isRunning: 0

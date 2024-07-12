@@ -45,7 +45,6 @@ public class interactableObjects : MonoBehaviour
         {
             _catActionScript.isInsidePuddle = true;
             Debug.Log("Player is inside the puddle!");
-            playerStatus.PlayerStatus = status.inWater;
         }
         else
         {

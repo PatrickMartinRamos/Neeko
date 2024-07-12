@@ -44,7 +44,7 @@ public class HeatPointsManager : MonoBehaviour
                 increment = 2;
                 break;
             case status.inWater:
-                increment = 2;
+                increment = 0;
                 break;
             default:
                 break;
