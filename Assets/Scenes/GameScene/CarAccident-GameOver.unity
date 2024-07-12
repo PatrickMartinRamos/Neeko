@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -291.0203, y: 0, z: -299.7771, w: -17.512495}
+  m_margin: {x: -267.52313, y: 0, z: -262.65442, w: -17.512495}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1201,6 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4ef2b18ef792041a2c541c0ab04bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathCause: 1
 --- !u!1 &1508288561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1717,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2035680095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1378721245}
+        m_TargetAssemblyTypeName: DeathSceneScript, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2035680095
 MonoBehaviour:
   m_ObjectHideFlags: 0
