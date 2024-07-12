@@ -129,10 +129,10 @@ public class interactableObjects : MonoBehaviour
 
             if (_catActionScript.canDragObject && _catActionScript.isDragginObject)
             {
-                Vector3 newPosition = playerTransform.position + playerTransform.forward * 2f;
+                Vector3 newPosition = playerTransform.position + playerTransform.forward * 1f;
 
                 puzzleObject.transform.position = newPosition;
-                puzzleObject.GetComponent<Rigidbody>().isKinematic = true;
+                //puzzleObject.GetComponent<Rigidbody>().isKinematic = true;
                 //Debug.Log("object is being drag " + puzzleObject.name);
             }
             else if(!_catActionScript.isDragginObject)
