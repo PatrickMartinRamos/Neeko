@@ -24,6 +24,11 @@ public class TextChanger : MonoBehaviour
         "Understanding your present environment is very important for preventing heatstroke. (Heatstroke Zero, n.d.)",
         "Heatstroke can be prevented by paying attention. (Heatstroke Zero, n.d.)"
     };
+    private string[] dogBite = new string[2]
+{
+        "Who let the dogs out?! arff! arff! arff!!",
+        "Beware of the Feral Dogs."
+};
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -38,12 +43,17 @@ public class TextChanger : MonoBehaviour
 
         if (DeathCause == 1)
         {
-            int rand = Random.Range(0, 5);
+            int rand = Random.Range(0, 6);
             text.text = deathLines[rand];
+        }
+        else if (DeathCause == 2)
+        {
+            int rand = Random.Range(0, 5);
+            text.text = sunDried[rand];
         }
         else
         {
-            int rand = Random.Range(0, 5);
+            int rand = Random.Range(0, 2);
             text.text = sunDried[rand];
         }
     }

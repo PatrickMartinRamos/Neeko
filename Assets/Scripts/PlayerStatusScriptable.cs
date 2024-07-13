@@ -8,6 +8,7 @@ public class PlayerStatusScriptable : ScriptableObject
     public status PlayerStatus;
     public level PlayerLevel;
     public bool isRunning;
+    [Range(1,3)] public int causeDeath;
     private void Awake()
     {
         isRunning= false;

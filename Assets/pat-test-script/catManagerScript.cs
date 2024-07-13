@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class catManagerScript : MonoBehaviour
 {
     //public float heatMeter;
+    [SerializeField] PlayerStatusScriptable playerCondition;
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Cars"))
         {
-
-            SceneManager.LoadScene(0);
+            playerCondition.causeDeath = 1;
+            SceneManager.LoadScene(2);
         }
     }
 }

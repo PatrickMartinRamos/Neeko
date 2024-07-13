@@ -71,7 +71,8 @@ public class HeatPointsManager : MonoBehaviour
 
         if(playerHeatPt.Amount == 100)
         {
-            SceneManager.LoadScene(0);
+            playerCondition.causeDeath = 2;
+            SceneManager.LoadScene(3);
         }
     }
 

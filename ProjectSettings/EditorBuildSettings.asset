@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene/Level 1.unity
     guid: 07400ef6de5a93c4eb0f178e5d55886a
+  - enabled: 1
+    path: Assets/Scenes/GameScene/CarAccident-GameOver.unity
+    guid: 6cb056d501382c7458d836abc661d1d5
+  - enabled: 1
+    path: Assets/Scenes/GameScene/Sundried-Death.unity
+    guid: dcfa8f714ac291046a8f7cb34ba9765e
   m_configObjects: {}
