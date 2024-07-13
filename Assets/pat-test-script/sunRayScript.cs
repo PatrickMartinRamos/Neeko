@@ -10,7 +10,7 @@ public class sunRayScript : MonoBehaviour
     public PlayerStatusScriptable playerCondition;
     //public GameObject sunRayGameObject;
     public status playerStatus;
-    public bool isParticlePlaying = false;
+    private bool isParticlePlaying = false;
     private Coroutine angleCoroutine;
 
 
@@ -24,13 +24,12 @@ public class sunRayScript : MonoBehaviour
     private void Start()
     {
         //sunRayGameObject.SetActive(false);
-        GetComponent<ParticleSystem>().Clear();
-        HeatPointsManager.onSunRayTrigger.AddListener(sunRay);
+        GetComponent<ParticleSystem>().Clear();      
     }
 
     private void Update()
     {
-        sunRay();
+        HeatPointsManager.onSunRayTrigger.AddListener(sunRay);
     }
 
     void sunRay()
