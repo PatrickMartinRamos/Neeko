@@ -11,6 +11,7 @@ public class catManagerScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Cars"))
         {
+
             SceneManager.LoadScene(0);
         }
     }
