@@ -30,6 +30,12 @@ public class TextChanger : MonoBehaviour
     }
     private void Start()
     {
+        if (Cursor.visible == false)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         if (DeathCause == 1)
         {
             int rand = Random.Range(0, 5);

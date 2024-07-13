@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (Cursor.visible == false)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         initialPromptCG = transform.GetChild(0).GetComponent<CanvasGroup>();
         mainMenuCG = transform.GetChild(1).GetComponent<CanvasGroup>();
         settingsCG = transform.GetChild(2).GetComponent<CanvasGroup>();
