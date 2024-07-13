@@ -30,7 +30,7 @@ public class InteractUI : MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(playerPos.position, _catActionScript.interactRadius, UITriggerLayerMask);
 
-        if (colliders.Length > 0)
+        if (colliders.Length > 0 && !_catActionScript.isDragginObject)
         {
             // Debug.Log("show UI");
             interactUIPrefab.SetActive(true);

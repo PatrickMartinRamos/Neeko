@@ -10,7 +10,7 @@ public class npcScript : MonoBehaviour
     private float moveSpeed;
     private NavMeshAgent _navMeshAgent;
     private Animator animator;
-    private bool npcStartMoving = false;
+    public bool npcStartMoving = false;
 
 
     private void Awake()

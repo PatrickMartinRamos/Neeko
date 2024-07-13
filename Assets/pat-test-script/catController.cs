@@ -99,6 +99,10 @@ public class catController : MonoBehaviour
         //button for dragging puzzle objects
         _catActionScript.canDragPuzzleObject();
        _catActionScript.isDragginObject = !_catActionScript.isDragginObject;
+
+
+       _interactUI.interactUIPrefab.SetActive(false);
+        
     }
 
     public void NPCInteract(InputAction.CallbackContext context)
