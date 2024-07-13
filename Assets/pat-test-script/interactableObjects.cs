@@ -137,7 +137,7 @@ public class interactableObjects : MonoBehaviour
             }
             else if(!_catActionScript.isDragginObject)
             {
-                puzzleObject.GetComponent<Rigidbody>().isKinematic = false;
+                //puzzleObject.GetComponent<Rigidbody>().isKinematic = false;
                 //Debug.Log("Object is not being drag");
             }
         }

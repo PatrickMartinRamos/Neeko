@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ public class HeatPointsManager : MonoBehaviour
     [SerializeField] private BarValuesScriptable playerHeatPt;
     [SerializeField] private PlayerStatusScriptable playerCondition;
     private bool canIncrease=true;
+    public static UnityEvent onSunRayTrigger = new UnityEvent();
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,6 +32,11 @@ public class HeatPointsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(heatBar.value >= 80)
+        {
+            onSunRayTrigger.Invoke();
+        }
+
         playerStatus = playerCondition.PlayerStatus;
         level playerLevel = playerCondition.PlayerLevel;
         switch (playerStatus)
