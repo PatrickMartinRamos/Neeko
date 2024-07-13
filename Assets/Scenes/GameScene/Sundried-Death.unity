@@ -488,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835444359}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32848644, y: 0.15544796, z: -0.054905396, w: 0.93000966}
+  m_LocalRotation: {x: 0.32848647, y: 0.15544799, z: -0.054905407, w: 0.93000966}
   m_LocalPosition: {x: -1.08, y: 4.99, z: -9.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathCause: 2
+  playerCondition: {fileID: 11400000, guid: d5567273735a9244894eba0b320c4cba, type: 2}
 --- !u!1 &1508288561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,7 +1578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861456571}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32848644, y: 0.15544796, z: -0.054905396, w: 0.93000966}
+  m_LocalRotation: {x: 0.32848647, y: 0.15544799, z: -0.054905407, w: 0.93000966}
   m_LocalPosition: {x: -0.5801653, y: 1.315774, z: -9.291621}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

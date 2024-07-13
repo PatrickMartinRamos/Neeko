@@ -54,7 +54,7 @@ public class TextChanger : MonoBehaviour
         else
         {
             int rand = Random.Range(0, 2);
-            text.text = sunDried[rand];
+            text.text = dogBite[rand];
         }
     }
 }

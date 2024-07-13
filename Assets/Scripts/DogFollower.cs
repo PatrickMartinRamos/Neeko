@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DogFollower : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class DogFollower : MonoBehaviour
     private GameObject dog;
     private GameObject player;
     private Animator dogAnim;
+    [SerializeField] private PlayerStatusScriptable playerCondition;
 
     private void Awake()
     {
@@ -68,5 +71,6 @@ public class DogFollower : MonoBehaviour
             return true;
         else return false;
     }
+
 
 }

@@ -19,8 +19,8 @@ public class DeathSceneScript : MonoBehaviour
     void Update()
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(deathLine.DOFade(1, 0.5f));
-        seq.Append(backBtn.DOScale(1, 0.5f));
+        seq.Append(deathLine.DOFade(1, 1f));
+        seq.Append(backBtn.DOScale(1, 1f));
     }
     public void ChangeScene()
     {

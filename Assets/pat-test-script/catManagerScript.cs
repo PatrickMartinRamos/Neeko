@@ -15,5 +15,11 @@ public class catManagerScript : MonoBehaviour
             playerCondition.causeDeath = 1;
             SceneManager.LoadScene(2);
         }
+        else if (collision.gameObject.CompareTag("Dogs"))
+        {
+            playerCondition.causeDeath = 3;
+            SceneManager.LoadScene(4);
+        }
     }
+
 }

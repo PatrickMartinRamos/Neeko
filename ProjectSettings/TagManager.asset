@@ -9,6 +9,7 @@ TagManager:
   - Building
   - Road
   - WaterBottle
+  - Dogs
   layers:
   - Default
   - TransparentFX
