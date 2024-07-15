@@ -42,7 +42,7 @@ public class HeatPointsManager : MonoBehaviour
         switch (playerStatus)
         {
             case status.inShadow:
-                increment = -3;
+                increment = -5;
                 break;
             case status.underSun:
                 increment = 5;

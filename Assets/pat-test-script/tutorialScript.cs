@@ -13,6 +13,7 @@ public class tutorialScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Starting Tutorial Script");
         ShowCurrentTutorial();
         PauseGame();
         TutorialUI.SetActive(true);
@@ -21,10 +22,18 @@ public class tutorialScript : MonoBehaviour
     private void Awake()
     {
         _audioManagerInstance = audioManager.instance;
+        Debug.Log(_audioManagerInstance != null ? "AudioManager instance found." : "AudioManager instance is null.");
     }
 
     public void ShowNextTutorial()
     {
+        Debug.Log("Showing next tutorial");
+        if (tutorials.Count == 0)
+        {
+            Debug.LogWarning("Tutorial list is empty");
+            return;
+        }
+
         tutorials[currentIndex].SetActive(false);
         currentIndex = (currentIndex + 1) % tutorials.Count;
         ShowCurrentTutorial();
@@ -33,6 +42,13 @@ public class tutorialScript : MonoBehaviour
 
     public void ShowPreviousTutorial()
     {
+        Debug.Log("Showing previous tutorial");
+        if (tutorials.Count == 0)
+        {
+            Debug.LogWarning("Tutorial list is empty");
+            return;
+        }
+
         tutorials[currentIndex].SetActive(false);
         currentIndex = (currentIndex - 1 + tutorials.Count) % tutorials.Count;
         ShowCurrentTutorial();
@@ -41,6 +57,7 @@ public class tutorialScript : MonoBehaviour
 
     private void ShowCurrentTutorial()
     {
+        Debug.Log($"Showing tutorial at index {currentIndex}");
         tutorials[currentIndex].SetActive(true);
         if (currentIndex == tutorials.Count - 1)
         {
@@ -54,6 +71,7 @@ public class tutorialScript : MonoBehaviour
 
     public void CloseTutorial()
     {
+        Debug.Log("Closing tutorial");
         playButtonSFX();
         TutorialUI.SetActive(false);
         closeButton.SetActive(false);
@@ -63,29 +81,32 @@ public class tutorialScript : MonoBehaviour
 
     void playButtonSFX()
     {
-        _audioManagerInstance.Play("ButtonSFX");
+        if (_audioManagerInstance != null)
+        {
+            _audioManagerInstance.Play("ButtonSFX");
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager instance is null, cannot play sound");
+        }
     }
 
     private void PauseGame()
     {
+        Debug.Log("Pausing game");
         Time.timeScale = 0f;
     }
 
     private void ResumeGame()
     {
+        Debug.Log("Resuming game");
         Time.timeScale = 1f;
     }
 
     private void HideCursor()
     {
+        Debug.Log("Hiding cursor");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    //public void ActivateTutorialUI()
-    //{
-    //    TutorialUI.SetActive(true);
-    //    ShowCurrentTutorial();
-    //    PauseGame();
-    //}
 }

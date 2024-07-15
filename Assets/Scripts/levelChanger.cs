@@ -6,6 +6,12 @@ using UnityEngine;
 public class levelChanger : MonoBehaviour
 {
     [SerializeField]private level currentLevel;
+    private audioManager _audioManagerInstance;
+    private void Awake()
+    {
+        _audioManagerInstance = audioManager.instance;
+        Debug.Log(_audioManagerInstance != null ? "AudioManager instance found." : "AudioManager instance is null.");
+    }
     // Start is called before the first frame update
     public void Start()
     {
@@ -19,6 +25,14 @@ public class levelChanger : MonoBehaviour
     {
         playerStatus.PlayerLevel = currentLevel;
         playerStatus.playerHeatPt.Amount = 0;
+        if (_audioManagerInstance != null)
+        {
+            _audioManagerInstance.Play("LevelSFX");
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager instance is null, cannot play sound");
+        }
     }
     void enableCheckpoint()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class audioManager : MonoBehaviour
 {
     public static audioManager instance;
+    [SerializeField] private Volumes sfx;
 
     [System.Serializable]
     public class Sound
@@ -21,6 +22,7 @@ public class audioManager : MonoBehaviour
     }
 
     public List<Sound> sounds = new List<Sound>();
+    private float currrentVolume;
 
     void Awake()
     {
@@ -38,9 +40,20 @@ public class audioManager : MonoBehaviour
         {
             _sounds.source = gameObject.AddComponent<AudioSource>();
             _sounds.source.clip = _sounds.clip;
-            _sounds.source.volume = _sounds.volume;
+            currrentVolume= _sounds.volume;
             _sounds.source.loop = _sounds.loop;
             _sounds.source.playOnAwake = _sounds.playonAwake;
+        }
+    }
+    private void Update()
+    {
+        if (sfx.volume != currrentVolume)
+        {
+            foreach (Sound _sounds in sounds)
+            {
+                _sounds.source.volume = sfx.volume;
+                currrentVolume = _sounds.source.volume;
+            }
         }
     }
     public void Play(string name)

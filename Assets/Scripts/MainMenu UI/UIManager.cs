@@ -87,9 +87,10 @@ public class UIManager : MonoBehaviour
     }
     void QuitGame()
     {
-        Sequence seq = DOTween.Sequence();
+/*        Sequence seq = DOTween.Sequence();
         HideMainMenu(seq);
         seq.AppendInterval(2);
-        seq.OnComplete(()=>fadeTween.Play()); 
+        seq.OnComplete(()=>fadeTween.Play()); */
+        Application.Quit();
     }
 }
