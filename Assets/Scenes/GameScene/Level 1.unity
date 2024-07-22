@@ -39562,7 +39562,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 264d7ac74454f754d974b32d18e6bee6, type: 2}
     - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
       propertyPath: sounds.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
       propertyPath: sounds.Array.data[2].clip
@@ -39577,7 +39577,23 @@ PrefabInstance:
       value: LevelSFX
       objectReference: {fileID: 0}
     - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ab3a43af03bc74c4a82536c4006cacbf, type: 3}
+    - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
+      propertyPath: sounds.Array.data[3].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: DogBark
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
       propertyPath: sounds.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}
+      propertyPath: sounds.Array.data[3].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6705652968217151363, guid: e23b1575c00082e468e2c85e7dde848b, type: 3}

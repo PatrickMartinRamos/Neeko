@@ -8,11 +8,13 @@ public class DeathSceneScript : MonoBehaviour
 {
     private CanvasGroup deathLine;
     private Transform backBtn;
+    [SerializeField] private PlayerStatusScriptable playerStats;
     // Start is called before the first frame update
     void Awake()
     {
         deathLine = transform.GetChild(0).GetComponent<CanvasGroup>();
         backBtn = transform.GetChild(1);
+        playerStats.PlayerLevel = level.one;
     }
 
     // Update is called once per frame

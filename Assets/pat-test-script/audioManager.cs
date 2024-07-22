@@ -40,7 +40,8 @@ public class audioManager : MonoBehaviour
         {
             _sounds.source = gameObject.AddComponent<AudioSource>();
             _sounds.source.clip = _sounds.clip;
-            currrentVolume= _sounds.volume;
+            _sounds.source.volume = sfx.volume;
+            currrentVolume = _sounds.volume;
             _sounds.source.loop = _sounds.loop;
             _sounds.source.playOnAwake = _sounds.playonAwake;
         }

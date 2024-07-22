@@ -43,5 +43,9 @@ public class AudioManager : MonoBehaviour
         sfx.volume = sfx_slider.value;
         SFXAudioSource.volume = sfx.volume;
     }
+    public void PlayButtonSFX()
+    {
+        SFXAudioSource.Play();
+    }
 
 }

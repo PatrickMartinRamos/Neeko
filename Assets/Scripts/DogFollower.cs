@@ -11,6 +11,7 @@ public class DogFollower : MonoBehaviour
     private GameObject player;
     private Animator dogAnim;
     [SerializeField] private PlayerStatusScriptable playerCondition;
+    private audioManager _audioManagerInstance;
 
     private void Awake()
     {
@@ -18,6 +19,10 @@ public class DogFollower : MonoBehaviour
         dog = transform.GetChild(0).gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         dogAnim = dog.GetComponent<Animator>();
+
+        _audioManagerInstance = audioManager.instance;
+        Debug.Log(_audioManagerInstance != null ? "AudioManager instance found." : "AudioManager instance is null.");
+
     }
     private void Update()
     {
@@ -27,9 +32,18 @@ public class DogFollower : MonoBehaviour
             {
                 dogAnim.SetBool("seePlayer", true);
                 dog.transform.LookAt(player.transform);
+                if (_audioManagerInstance != null)
+                {
+                    _audioManagerInstance.Play("DogBark");
+                }
+                else
+                {
+                    Debug.LogWarning("AudioManager instance is null, cannot play sound");
+                }
             }
             else if (!withinDistance())
             {
+                _audioManagerInstance.Stop("DogBark");
                 dogAnim.SetBool("seePlayer", false);
             }
 
