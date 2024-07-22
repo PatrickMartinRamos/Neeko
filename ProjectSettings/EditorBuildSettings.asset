@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene/dogBite.unity
     guid: d10be92da8eefe24ca50ec4f19a826b2
+  - enabled: 1
+    path: Assets/Scenes/GameScene/FinishScene.unity
+    guid: 29ea1187a28335945920ae0fce3c501f
   m_configObjects: {}

@@ -22,7 +22,7 @@ public class carSpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        _audioManagerInstance = audioManager.instance;
+        _audioManagerInstance = FindObjectOfType<audioManager>();
     }
 
     private void Start()
@@ -65,7 +65,7 @@ public class carSpawnManager : MonoBehaviour
             }
         }
     }
-    void playCarAmbience()
+    public void playCarAmbience()
     {
         _audioManagerInstance.Play("CarAmbience");
     }

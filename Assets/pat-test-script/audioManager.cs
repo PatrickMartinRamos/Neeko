@@ -14,9 +14,7 @@ public class audioManager : MonoBehaviour
         [Range(0f, 1f)]
         public float volume = 0.7f;
         public bool loop = false;
-        public bool playonAwake = false;
-
-        [HideInInspector]
+        public bool playonAwake = false;  
         public AudioSource source;
     }
 
@@ -24,15 +22,20 @@ public class audioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+    
+    }
+
+    private void Update()
+    {
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
         foreach (Sound _sounds in sounds)
         {
@@ -67,4 +70,6 @@ public class audioManager : MonoBehaviour
 
         _sounds.source.Stop();
     }
+
+
 }

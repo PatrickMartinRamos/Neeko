@@ -20,7 +20,7 @@ public class tutorialScript : MonoBehaviour
 
     private void Awake()
     {
-        _audioManagerInstance = audioManager.instance;
+        _audioManagerInstance = FindObjectOfType<audioManager>();
     }
 
     public void ShowNextTutorial()
@@ -59,6 +59,7 @@ public class tutorialScript : MonoBehaviour
         closeButton.SetActive(false);
         ResumeGame();
         HideCursor();
+        Debug.Log("Close ui");
     }
 
     void playButtonSFX()
